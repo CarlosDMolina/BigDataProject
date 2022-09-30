@@ -1,0 +1,3 @@
+/home/oem/CLionProjects/bigDataProjectCoOp/cmake-build-debug/CMakeFiles/bigDataProjectCoOp.dir
+/home/oem/CLionProjects/bigDataProjectCoOp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/oem/CLionProjects/bigDataProjectCoOp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
