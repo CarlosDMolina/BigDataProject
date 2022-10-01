@@ -1,4 +1,0 @@
-/home/oem/Downloads/clion-2022.2.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/oem/Downloads/clion-2022.2.2/bin/ninja/linux/ninja -G Ninja -S /home/oem/CLionProjects/bigDataProjectCoOp -B /home/oem/CLionProjects/bigDataProjectCoOp/cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: /home/oem/CLionProjects/bigDataProjectCoOp/cmake-build-debug
