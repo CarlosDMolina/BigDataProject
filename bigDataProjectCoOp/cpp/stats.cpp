@@ -139,6 +139,11 @@ int calculate_vector_mean(vec* &ans,const char* path,uint32 offset)
 
 int main(int argc, char *argv[]) {
 
+    if(argc <2)
+    {
+        printf("INVALID OUTPUT\n usage: stats <input file path> <output file name>")
+        
+    }
    // read_CSV_file(F, stoi(argv[2]), false);
    string G="open_mode=read;file_name=";
    G+=argv[1];
