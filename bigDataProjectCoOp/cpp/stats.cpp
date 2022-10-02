@@ -33,7 +33,7 @@ public:
         M2+=(v-M2)/count;
         S=S+(v-M2)*(v-old_M);
         if(count>1)
-        variance=S/(count-1);
+            variance=S/(count-1);
         real64 delta = v - mean;
         mean += delta / (count);
     }
@@ -141,38 +141,38 @@ int main(int argc, char *argv[]) {
 
     if(argc <2)
     {
-        printf("INVALID OUTPUT\n usage: stats <input file path> <output file name>")
-        
+        printf("INVALID OUTPUT\n usage: stats <input file path> <output file name>");
+
     }
-   // read_CSV_file(F, stoi(argv[2]), false);
-   string G="open_mode=read;file_name=";
-   G+=argv[1];
-   G+=";";
-   vec* ANS;
- uint32 j_count = calculate_vector_mean(ANS,G.c_str(),1);
+    // read_CSV_file(F, stoi(argv[2]), false);
+    string G="open_mode=read;file_name=";
+    G+=argv[1];
+    G+=";";
+    vec* ANS;
+    uint32 j_count = calculate_vector_mean(ANS,G.c_str(),1);
     FILE* ptr = fopen(argv[2],"w");
- string head="           i  uint32,           c  uint32,           m real64,          v real64\n";
-for( int32 IT=1 ; IT<j_count;IT++  )
-{
-    //string GX= to_string(ANS[IT].variance);
+    string head="           i  uint32,           c  uint32,           m real64,          v real64\n";
+    for( int32 IT=1 ; IT<j_count;IT++  )
+    {
+        //string GX= to_string(ANS[IT].variance);
 
-    printf("j=%d, elements Count= %d, Mean:%f, Variance:%f\n",ANS[IT].j,ANS[IT].count,ANS[IT].mean,ANS[IT].variance);
-    string s1((20- to_string(ANS[IT].j).length()),' ');
-    s1+=to_string(ANS[IT].j);
-    string s2((20- to_string(ANS[IT].count).length()),' ');
-    s2+=to_string(ANS[IT].count);
-    string s3((20- to_string(ANS[IT].mean).length()),' ');
-    s3+=to_string(ANS[IT].mean);
-    string s4((20- to_string(ANS[IT].variance).length()),' ');
-    s4+=to_string(ANS[IT].variance);
-    string final = s1+","+s2+","+s3+","+s4+"\n";
-    fputs(final.c_str(),ptr);
-}
-
-
+        printf("j=%d, elements Count= %d, Mean:%f, Variance:%f\n",ANS[IT].j,ANS[IT].count,ANS[IT].mean,ANS[IT].variance);
+        string s1((20- to_string(ANS[IT].j).length()),' ');
+        s1+=to_string(ANS[IT].j);
+        string s2((20- to_string(ANS[IT].count).length()),' ');
+        s2+=to_string(ANS[IT].count);
+        string s3((20- to_string(ANS[IT].mean).length()),' ');
+        s3+=to_string(ANS[IT].mean);
+        string s4((20- to_string(ANS[IT].variance).length()),' ');
+        s4+=to_string(ANS[IT].variance);
+        string final = s1+","+s2+","+s3+","+s4+"\n";
+        fputs(final.c_str(),ptr);
+    }
 
 
-delete[] ANS;
+
+
+    delete[] ANS;
     fclose(ptr);
     return 0;
 }
