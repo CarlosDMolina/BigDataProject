@@ -74,7 +74,7 @@ vector<Point> read_dataset(string file_name)
 
     return ds;
 }
-vector<Point> read_dataset_w(string file_name,long int start_point)
+vector<Point> read_dataset_w(string file_name,long int start_point,long int window_size)
 {
     string line;
     vector<Point> ds;
@@ -82,15 +82,18 @@ vector<Point> read_dataset_w(string file_name,long int start_point)
     if (myfile.is_open())
     {
         long int cntr=0;
-        while ( getline (myfile,line) )
+        long int wx=0;
+        while ( getline (myfile,line) &&wx<window_size )
         {
-        if(cntr >start_point){
+        if(cntr >=start_point){
             vector<string> splt= splitString(line,' ');
             if (splt.size()==1){
                 sz = stoi(splt[0]);
 
+
             } else{
                 ds.push_back(Point(stoi(splt[1]), stoi(splt[2])));
+                wx++;
 
 
             }}
@@ -287,9 +290,10 @@ omp_set_num_threads(num_threads);
     else
     {
         int start_point=0;
-        while(start_point<sz-start_point||sz==0)
+        sz=window_size*2;
+        while(start_point<=sz-start_point)
         {
-            vector<Point>ds=read_dataset_w(fp,start_point);
+            vector<Point>ds=read_dataset_w(fp,start_point,window_size);
             kMeansClustering_seq(ds,epochs,k,num_threads,test_mode);
             start_point+=window_size;
         }
